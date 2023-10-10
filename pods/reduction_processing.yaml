@@ -1,0 +1,74 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod1
+spec:
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+        - matchExpressions:
+          - key: datastore
+            operator: In
+            values:
+            - tx
+  containers:
+  - name: pod1
+    image: pod1:latest
+---
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod2
+spec:
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+        - matchExpressions:
+          - key: datapreprocessing1
+            operator: In
+            values:
+            - pre1
+  containers:
+  - name: pod2
+    image: pod2:latest
+---
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod3
+spec:
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+        - matchExpressions:
+          - key: datapreprocessing2
+            operator: In
+            values:
+            - pre2
+  containers:
+  - name: pod3
+    image: pod3:latest
+---
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod4
+spec:
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+        - matchExpressions:
+          - key: datapreprocessing2
+            operator: In
+            values:
+            - pre2
+  containers:
+  - name: pod4
+    image: pod4:latest

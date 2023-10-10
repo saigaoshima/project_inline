@@ -1,0 +1,17 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: data-preprocessing-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: data-preprocessing-app
+  template:
+    metadata:
+      labels:
+        app: data-preprocessing-app
+    spec:
+      containers:
+        - name: data-processing-container
+          image: your-data-processing-image:latest
